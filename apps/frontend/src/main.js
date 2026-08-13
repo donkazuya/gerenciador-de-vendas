@@ -9,8 +9,8 @@ function createWindow() {
     height: 768,
     webPreferences: {
       nodeIntegration: true,
-      contextIsolation: false
-    }
+      contextIsolation: false,
+    },
   });
 
   // Em modo dev (usando o Nx), apontamos para a porta padrão do Angular
@@ -21,7 +21,7 @@ function createWindow() {
     win.loadURL(`file://${path.join(__dirname, '../../../dist/apps/frontend/browser/index.html')}`);
   }
 
-  win.on('closed', () => win = null);
+  win.on('closed', () => (win = null));
 }
 
 app.on('ready', createWindow);

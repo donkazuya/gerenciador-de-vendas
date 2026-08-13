@@ -1,10 +1,18 @@
 <div class="min-h-screen bg-bg text-text transition-colors duration-200">
-
   <!-- Header / Navbar -->
-  <header style="background-color: var(--color-surface); border-bottom: 1px solid var(--color-border); padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center;">
-    <div style="display: flex; align-items: center; gap: 0.75rem;">
-      <div style="width: 12px; height: 12px; border-radius: 50%; background-color: var(--color-primary);"></div>
-      <h1 style="font-size: 1.25rem; font-weight: 700; margin: 0;">Gerenciador de Vendas</h1>
+  <header
+    style="
+      background-color: var(--color-surface);
+      border-bottom: 1px solid var(--color-border);
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    "
+  >
+    <div style="display: flex; align-items: center; gap: 0.75rem">
+      <div style="width: 12px; height: 12px; border-radius: 50%; background-color: var(--color-primary)"></div>
+      <h1 style="font-size: 1.25rem; font-weight: 700; margin: 0">Gerenciador de Vendas</h1>
     </div>
 
     <!-- Seletor de Tema -->
@@ -12,78 +20,145 @@
   </header>
 
   <!-- Conteúdo Principal -->
-  <main style="max-width: 1200px; margin: 2rem auto; padding: 0 1.5rem; display: flex; flex-direction: column; gap: 2rem;">
-
+  <main
+    style="max-width: 1200px; margin: 2rem auto; padding: 0 1.5rem; display: flex; flex-direction: column; gap: 2rem"
+  >
     <!-- Hero / Boas-vindas -->
-    <div style="display: flex; justify-content: space-between; align-items: center;">
+    <div style="display: flex; justify-content: space-between; align-items: center">
       <div>
-        <h2 style="font-size: 1.5rem; font-weight: 600; margin: 0 0 0.25rem 0;">Painel de Controle</h2>
-        <p style="color: var(--color-text-muted); margin: 0;">Acompanhe o desempenho das vendas do seu negócio em tempo real.</p>
+        <h2 style="font-size: 1.5rem; font-weight: 600; margin: 0 0 0.25rem 0">Painel de Controle</h2>
+        <p style="color: var(--color-text-muted); margin: 0">
+          Acompanhe o desempenho das vendas do seu negócio em tempo real.
+        </p>
       </div>
-      <button style="background-color: var(--color-primary); color: #ffffff; border: none; padding: 0.625rem 1.25rem; border-radius: 0.5rem; font-weight: 600; cursor: pointer; transition: opacity 0.2s;" onmouseover="this.style.opacity='0.9'" onmouseout="this.style.opacity='1'">
+      <button
+        style="
+          background-color: var(--color-primary);
+          color: #ffffff;
+          border: none;
+          padding: 0.625rem 1.25rem;
+          border-radius: 0.5rem;
+          font-weight: 600;
+          cursor: pointer;
+          transition: opacity 0.2s;
+        "
+        onmouseover="this.style.opacity='0.9'"
+        onmouseout="this.style.opacity='1'"
+      >
         + Nova Venda
       </button>
     </div>
 
     <!-- Cards de Métricas -->
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem;">
-
-      <div style="background-color: var(--color-surface); border: 1px solid var(--color-border); padding: 1.5rem; border-radius: 0.75rem;">
-        <span style="color: var(--color-text-muted); font-size: 0.875rem; font-weight: 500;">Faturamento Total</span>
-        <div style="font-size: 1.875rem; font-weight: 700; margin-top: 0.5rem;">R$ 45.280,00</div>
-        <span style="color: var(--color-primary); font-size: 0.75rem; font-weight: 600; margin-top: 0.5rem; display: inline-block;">+12.5% em relação ao mês anterior</span>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem">
+      <div
+        style="
+          background-color: var(--color-surface);
+          border: 1px solid var(--color-border);
+          padding: 1.5rem;
+          border-radius: 0.75rem;
+        "
+      >
+        <span style="color: var(--color-text-muted); font-size: 0.875rem; font-weight: 500">Faturamento Total</span>
+        <div style="font-size: 1.875rem; font-weight: 700; margin-top: 0.5rem">R$ 45.280,00</div>
+        <span
+          style="
+            color: var(--color-primary);
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-top: 0.5rem;
+            display: inline-block;
+          "
+        >
+          +12.5% em relação ao mês anterior
+        </span>
       </div>
 
-      <div style="background-color: var(--color-surface); border: 1px solid var(--color-border); padding: 1.5rem; border-radius: 0.75rem;">
-        <span style="color: var(--color-text-muted); font-size: 0.875rem; font-weight: 500;">Vendas Realizadas</span>
-        <div style="font-size: 1.875rem; font-weight: 700; margin-top: 0.5rem;">142</div>
-        <span style="color: var(--color-primary); font-size: 0.75rem; font-weight: 600; margin-top: 0.5rem; display: inline-block;">8 pendentes de pagamento</span>
+      <div
+        style="
+          background-color: var(--color-surface);
+          border: 1px solid var(--color-border);
+          padding: 1.5rem;
+          border-radius: 0.75rem;
+        "
+      >
+        <span style="color: var(--color-text-muted); font-size: 0.875rem; font-weight: 500">Vendas Realizadas</span>
+        <div style="font-size: 1.875rem; font-weight: 700; margin-top: 0.5rem">142</div>
+        <span
+          style="
+            color: var(--color-primary);
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-top: 0.5rem;
+            display: inline-block;
+          "
+        >
+          8 pendentes de pagamento
+        </span>
       </div>
 
-      <div style="background-color: var(--color-surface); border: 1px solid var(--color-border); padding: 1.5rem; border-radius: 0.75rem;">
-        <span style="color: var(--color-text-muted); font-size: 0.875rem; font-weight: 500;">Ticket Médio</span>
-        <div style="font-size: 1.875rem; font-weight: 700; margin-top: 0.5rem;">R$ 318,87</div>
-        <span style="color: var(--color-text-muted); font-size: 0.75rem; display: inline-block; margin-top: 0.5rem;">Estável</span>
+      <div
+        style="
+          background-color: var(--color-surface);
+          border: 1px solid var(--color-border);
+          padding: 1.5rem;
+          border-radius: 0.75rem;
+        "
+      >
+        <span style="color: var(--color-text-muted); font-size: 0.875rem; font-weight: 500">Ticket Médio</span>
+        <div style="font-size: 1.875rem; font-weight: 700; margin-top: 0.5rem">R$ 318,87</div>
+        <span style="color: var(--color-text-muted); font-size: 0.75rem; display: inline-block; margin-top: 0.5rem">
+          Estável
+        </span>
       </div>
-
     </div>
 
     <!-- Tabela / Lista Recente -->
-    <div style="background-color: var(--color-surface); border: 1px solid var(--color-border); border-radius: 0.75rem; padding: 1.5rem;">
-      <h3 style="font-size: 1.125rem; font-weight: 600; margin: 0 0 1rem 0;">Últimas Transações</h3>
+    <div
+      style="
+        background-color: var(--color-surface);
+        border: 1px solid var(--color-border);
+        border-radius: 0.75rem;
+        padding: 1.5rem;
+      "
+    >
+      <h3 style="font-size: 1.125rem; font-weight: 600; margin: 0 0 1rem 0">Últimas Transações</h3>
 
-      <table style="width: 100%; border-collapse: collapse; text-align: left; font-size: 0.875rem;">
+      <table style="width: 100%; border-collapse: collapse; text-align: left; font-size: 0.875rem">
         <thead>
-          <tr style="border-bottom: 1px solid var(--color-border); color: var(--color-text-muted);">
-            <th style="padding: 0.75rem 0;">Cliente</th>
-            <th style="padding: 0.75rem 0;">Data</th>
-            <th style="padding: 0.75rem 0;">Status</th>
-            <th style="padding: 0.75rem 0; text-align: right;">Valor</th>
+          <tr style="border-bottom: 1px solid var(--color-border); color: var(--color-text-muted)">
+            <th style="padding: 0.75rem 0">Cliente</th>
+            <th style="padding: 0.75rem 0">Data</th>
+            <th style="padding: 0.75rem 0">Status</th>
+            <th style="padding: 0.75rem 0; text-align: right">Valor</th>
           </tr>
         </thead>
         <tbody>
-          <tr style="border-bottom: 1px solid var(--color-border);">
-            <td style="padding: 1rem 0; font-weight: 500;">Mercado Silva & Cia</td>
-            <td style="padding: 1rem 0; color: var(--color-text-muted);">Hoje, 14:32</td>
-            <td style="padding: 1rem 0;"><span style="color: var(--color-primary); font-weight: 600;">Concluído</span></td>
-            <td style="padding: 1rem 0; text-align: right; font-weight: 600;">R$ 1.250,00</td>
+          <tr style="border-bottom: 1px solid var(--color-border)">
+            <td style="padding: 1rem 0; font-weight: 500">Mercado Silva & Cia</td>
+            <td style="padding: 1rem 0; color: var(--color-text-muted)">Hoje, 14:32</td>
+            <td style="padding: 1rem 0">
+              <span style="color: var(--color-primary); font-weight: 600">Concluído</span>
+            </td>
+            <td style="padding: 1rem 0; text-align: right; font-weight: 600">R$ 1.250,00</td>
           </tr>
-          <tr style="border-bottom: 1px solid var(--color-border);">
-            <td style="padding: 1rem 0; font-weight: 500;">Auto Peças Central</td>
-            <td style="padding: 1rem 0; color: var(--color-text-muted);">Hoje, 11:15</td>
-            <td style="padding: 1rem 0;"><span style="color: var(--color-primary); font-weight: 600;">Concluído</span></td>
-            <td style="padding: 1rem 0; text-align: right; font-weight: 600;">R$ 840,00</td>
+          <tr style="border-bottom: 1px solid var(--color-border)">
+            <td style="padding: 1rem 0; font-weight: 500">Auto Peças Central</td>
+            <td style="padding: 1rem 0; color: var(--color-text-muted)">Hoje, 11:15</td>
+            <td style="padding: 1rem 0">
+              <span style="color: var(--color-primary); font-weight: 600">Concluído</span>
+            </td>
+            <td style="padding: 1rem 0; text-align: right; font-weight: 600">R$ 840,00</td>
           </tr>
           <tr>
-            <td style="padding: 1rem 0; font-weight: 500;">Distribuidora Santos</td>
-            <td style="padding: 1rem 0; color: var(--color-text-muted);">Ontem, 18:00</td>
-            <td style="padding: 1rem 0;"><span style="color: var(--color-text-muted);">Pendente</span></td>
-            <td style="padding: 1rem 0; text-align: right; font-weight: 600;">R$ 3.100,00</td>
+            <td style="padding: 1rem 0; font-weight: 500">Distribuidora Santos</td>
+            <td style="padding: 1rem 0; color: var(--color-text-muted)">Ontem, 18:00</td>
+            <td style="padding: 1rem 0"><span style="color: var(--color-text-muted)">Pendente</span></td>
+            <td style="padding: 1rem 0; text-align: right; font-weight: 600">R$ 3.100,00</td>
           </tr>
         </tbody>
       </table>
     </div>
-
   </main>
 </div>
 <router-outlet></router-outlet>

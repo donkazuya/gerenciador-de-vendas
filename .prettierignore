@@ -1,6 +1,15 @@
-# Add files here to ignore them from prettier formatting
-/dist
-/coverage
-/.nx/cache
-/.nx/workspace-data
-.angular
+# Dist e artefatos de build
+dist
+tmp
+out-tsc
+.nx
+
+# Modulos e dependencias
+node_modules
+package-lock.json
+
+# Arquivos de cobertura de teste
+coverage
+
+# Cache
+.angular/cache

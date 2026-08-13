@@ -16,7 +16,9 @@
     "start:backend": "nx serve gerenciador-vendas-backend",
     "start:frontend": "nx serve gerenciador-vendas-frontend",
     "start:electron": "electron apps/frontend/src/main.js",
-    "dev": "concurrently \"npm run start:backend\" \"npm run start:frontend\" \"wait-on http://localhost:4200 && npm run start:electron\""
+    "dev": "concurrently \"npm run start:backend\" \"npm run start:frontend\" \"wait-on http://localhost:4200 && npm run start:electron\"",
+    "format:check": "prettier --check \"apps/**/*.{ts,js,html,json,scss,css}\"",
+    "format:write": "prettier --write \"apps/**/*.{ts,js,html,json,scss,css}\""
   },
   "private": true,
   "devDependencies": {
@@ -27,6 +29,7 @@
     "@angular/compiler-cli": "~21.1.0",
     "@angular/language-service": "~21.1.0",
     "@eslint/js": "^9.8.0",
+    "@ianvs/prettier-plugin-sort-imports": "^4.7.1",
     "@nestjs/schematics": "^11.0.0",
     "@nestjs/testing": "^11.0.0",
     "@nx/angular": "^22.5.4",
