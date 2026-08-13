@@ -2,6 +2,16 @@
   "name": "@gerenciador-de-vendas/source",
   "version": "0.0.0",
   "license": "MIT",
+  "allowScripts": {
+    "@parcel/watcher": true,
+    "@swc/core": true,
+    "esbuild": true,
+    "less": true,
+    "lmdb": true,
+    "msgpackr-extract": true,
+    "nx": true,
+    "unrs-resolver": true
+  },
   "scripts": {
     "start:backend": "nx serve gerenciador-vendas-backend",
     "start:frontend": "nx serve gerenciador-vendas-frontend",
