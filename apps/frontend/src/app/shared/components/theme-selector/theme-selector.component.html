@@ -3,8 +3,8 @@
 
   <select
     id="theme-select"
-    [value]="themeService.currentTheme()"
-    (change)="onThemeChange($event)"
+    [ngModel]="themeService.currentTheme()"
+    (ngModelChange)="onThemeChange($event)"
     style="
       background-color: var(--color-bg);
       color: var(--color-text);
@@ -17,7 +17,7 @@
     "
   >
     @for (theme of themeService.themes; track theme.id) {
-      <option [value]="theme.id">
+      <option [value]="theme.id" [selected]="theme.id === themeService.currentTheme()">
         {{ theme.label }}
       </option>
     }
