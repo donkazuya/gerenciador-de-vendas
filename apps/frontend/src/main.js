@@ -14,7 +14,7 @@ function startBackend() {
     }
     if (fs.existsSync(backendPath)) {
       backendProcess = fork(backendPath, [], {
-        env: { ...process.env, PORT: 3000 }
+        env: { ...process.env, PORT: 3000 },
       });
       console.log('Backend iniciado com sucesso via Electron:', backendPath);
     } else {
@@ -49,7 +49,7 @@ function createWindow() {
     win.setMenu(null);
     Menu.setApplicationMenu(null);
     const indexPath = path.join(__dirname, '../../../dist/apps/frontend/browser/index.html');
-    win.loadFile(indexPath).catch(err => {
+    win.loadFile(indexPath).catch((err) => {
       console.error('Erro ao carregar index.html:', err);
     });
   }
