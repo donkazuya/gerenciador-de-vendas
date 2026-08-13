@@ -5,10 +5,12 @@ on:
     branches:
       - main
       - master
+      - ci-cd
   pull_request:
     branches:
       - main
       - master
+      - ci-cd
   workflow_dispatch:
 
 permissions:
@@ -27,7 +29,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 22
           cache: 'npm'
 
       - name: Install dependencies
@@ -43,7 +45,7 @@ jobs:
     name: Package Desktop App (Windows .exe)
     needs: lint-and-build
     runs-on: windows-latest
-    if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master' || github.event_name == 'workflow_dispatch'
+    if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master' || github.ref == 'refs/heads/ci-cd' || github.event_name == 'workflow_dispatch'
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -51,7 +53,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 22
           cache: 'npm'
 
       - name: Install dependencies
