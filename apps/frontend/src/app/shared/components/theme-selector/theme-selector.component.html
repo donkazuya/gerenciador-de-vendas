@@ -1,0 +1,18 @@
+<div style="display: flex; align-items: center; gap: 0.5rem;">
+  <label for="theme-select" style="font-size: 0.875rem; font-weight: 500; color: var(--color-text-muted);">
+    Tema:
+  </label>
+
+  <select
+    id="theme-select"
+    [value]="themeService.currentTheme()"
+    (change)="onThemeChange($event)"
+    style="background-color: var(--color-bg); color: var(--color-text); border: 1px solid var(--color-border); border-radius: 0.375rem; padding: 0.375rem 0.75rem; font-size: 0.875rem; cursor: pointer; outline: none;"
+  >
+    @for (theme of themeService.themes; track theme.id) {
+      <option [value]="theme.id">
+        {{ theme.label }}
+      </option>
+    }
+  </select>
+</div>
