@@ -1,6 +1,8 @@
 {
   "name": "@gerenciador-de-vendas/source",
   "version": "0.0.0",
+  "description": "Sistema Gerenciador de Vendas Desktop",
+  "author": "Gerenciador de Vendas Team",
   "license": "MIT",
   "allowScripts": {
     "@parcel/watcher": true,
@@ -12,11 +14,17 @@
     "nx": true,
     "unrs-resolver": true
   },
+  "main": "apps/frontend/src/main.js",
   "scripts": {
     "start:backend": "nx serve gerenciador-vendas-backend",
     "start:frontend": "nx serve gerenciador-vendas-frontend",
     "start:electron": "electron apps/frontend/src/main.js",
     "dev": "concurrently \"npm run start:backend\" \"npm run start:frontend\" \"wait-on http://localhost:4200 && npm run start:electron\"",
+    "build": "nx run-many -t build --all",
+    "build:backend": "nx build gerenciador-vendas-backend --configuration=production",
+    "build:frontend": "nx build gerenciador-vendas-frontend --configuration=production",
+    "build:electron": "npm run build && electron-builder",
+    "package:win": "npm run build && electron-builder --win nsis",
     "format:check": "prettier --check \"apps/**/*.{ts,js,html,json,scss,css}\"",
     "format:write": "prettier --write \"apps/**/*.{ts,js,html,json,scss,css}\""
   },
@@ -52,6 +60,7 @@
     "autoprefixer": "^10.5.4",
     "concurrently": "^10.0.4",
     "electron": "^43.4.0",
+    "electron-builder": "^26.15.3",
     "eslint": "^9.8.0",
     "eslint-config-prettier": "^10.0.0",
     "jsdom": "^27.1.0",
