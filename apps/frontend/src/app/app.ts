@@ -1,7 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { ThemeService } from './shared/services/theme.service';
 import { ThemeSelectorComponent } from './shared/components/theme-selector/theme-selector.component';
+import { ThemeService } from './shared/services/theme.service';
 
 @Component({
   imports: [RouterModule, ThemeSelectorComponent],

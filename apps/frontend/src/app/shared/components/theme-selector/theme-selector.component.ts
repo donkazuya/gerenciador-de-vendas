@@ -1,7 +1,6 @@
-import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ThemeService, Theme } from '../../services/theme.service';
-
+import { Component, inject } from '@angular/core';
+import { Theme, ThemeService } from '../../services/theme.service';
 
 @Component({
   selector: 'app-theme-selector',
