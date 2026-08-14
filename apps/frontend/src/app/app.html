@@ -44,10 +44,14 @@
         "
         onmouseover="this.style.opacity='0.9'"
         onmouseout="this.style.opacity='1'"
+        (click)="teste()"
       >
         + Nova Venda
       </button>
     </div>
+    @if (testeMessage) {
+      <p>{{ testeMessage }}</p>
+    }
 
     <!-- Cards de Métricas -->
     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem">
