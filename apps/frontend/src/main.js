@@ -6,19 +6,58 @@ const fs = require('fs');
 let win;
 let backendProcess;
 
+function getLogPath() {
+  const userDataPath = app.getPath('userData');
+  return path.join(userDataPath, 'backend.log');
+}
+
+function log(message) {
+  const logPath = getLogPath();
+  const timestamp = new Date().toISOString();
+  const line = `[${timestamp}] ${message}\n`;
+  fs.appendFileSync(logPath, line);
+  console.log(message);
+}
+
 function startBackend() {
   if (app.isPackaged) {
-    let backendPath = path.join(__dirname, '../../../dist/apps/backend/main.js');
-    if (!fs.existsSync(backendPath)) {
-      backendPath = backendPath.replace('app.asar', 'app.asar.unpacked');
-    }
+    const asarRoot = path.join(__dirname, '..', '..', '..');
+    const unpackedRoot = asarRoot.replace('app.asar', 'app.asar.unpacked');
+    const backendPath = path.join(unpackedRoot, 'dist', 'apps', 'backend', 'main.js');
+    const nodeModulesPath = path.join(unpackedRoot, 'node_modules');
+
+    log(`__dirname: ${__dirname}`);
+    log(`asarRoot: ${asarRoot}`);
+    log(`unpackedRoot: ${unpackedRoot}`);
+    log(`backendPath: ${backendPath}`);
+    log(`backendPath existe: ${fs.existsSync(backendPath)}`);
+    log(`nodeModulesPath: ${nodeModulesPath}`);
+    log(`nodeModulesPath existe: ${fs.existsSync(nodeModulesPath)}`);
+
     if (fs.existsSync(backendPath)) {
       backendProcess = fork(backendPath, [], {
-        env: { ...process.env, PORT: 3000 },
+        env: {
+          ...process.env,
+          PORT: '3000',
+          NODE_PATH: nodeModulesPath,
+        },
+        stdio: ['pipe', 'pipe', 'pipe', 'ipc'],
       });
-      console.log('Backend iniciado com sucesso via Electron:', backendPath);
+      backendProcess.stdout.on('data', (data) => {
+        log(`[backend stdout] ${data.toString().trim()}`);
+      });
+      backendProcess.stderr.on('data', (data) => {
+        log(`[backend stderr] ${data.toString().trim()}`);
+      });
+      backendProcess.on('error', (err) => {
+        log(`Erro ao iniciar o backend: ${err.message}`);
+      });
+      backendProcess.on('exit', (code, signal) => {
+        log(`Backend encerrado com código ${code}, sinal ${signal}`);
+      });
+      log('Backend fork() executado com sucesso');
     } else {
-      console.error('Arquivo de build do backend não encontrado em:', backendPath);
+      log(`ERRO: Arquivo de build do backend não encontrado em: ${backendPath}`);
     }
   }
 }

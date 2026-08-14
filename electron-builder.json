@@ -12,7 +12,8 @@
     "dist/apps/backend/**/*"
   ],
   "asarUnpack": [
-    "dist/apps/backend/**/*"
+    "dist/apps/backend/**/*",
+    "node_modules/**/*"
   ],
   "extraMetadata": {
     "main": "apps/frontend/src/main.js"
