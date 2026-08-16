@@ -9,11 +9,21 @@
   "files": [
     "apps/frontend/src/main.js",
     "dist/apps/frontend/browser/**/*",
-    "dist/apps/backend/**/*"
+    "dist/apps/backend/**/*",
+    "generated/prisma/**/*",
+    "prisma/**/*"
+  ],
+  "extraResources": [
+    {
+      "from": "dev.db",
+      "to": "database.db"
+    }
   ],
   "asarUnpack": [
     "dist/apps/backend/**/*",
-    "node_modules/**/*"
+    "node_modules/**/*",
+    "generated/prisma/**/*",
+    "prisma/**/*"
   ],
   "extraMetadata": {
     "main": "apps/frontend/src/main.js"

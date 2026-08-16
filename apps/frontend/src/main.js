@@ -26,6 +26,17 @@ function startBackend() {
     const backendPath = path.join(unpackedRoot, 'dist', 'apps', 'backend', 'main.js');
     const nodeModulesPath = path.join(unpackedRoot, 'node_modules');
 
+    const userDataPath = app.getPath('userData');
+    const dbPath = path.join(userDataPath, 'database.db');
+
+    const templateDbPath = path.join(process.resourcesPath, 'database.db');
+    if (!fs.existsSync(dbPath) && fs.existsSync(templateDbPath)) {
+      log(`Copiando banco de dados modelo inicial de ${templateDbPath} para ${dbPath}`);
+      fs.copyFileSync(templateDbPath, dbPath);
+    }
+
+    const databaseUrl = `file:${dbPath.replace(/\\/g, '/')}`;
+
     log(`__dirname: ${__dirname}`);
     log(`asarRoot: ${asarRoot}`);
     log(`unpackedRoot: ${unpackedRoot}`);
@@ -33,12 +44,14 @@ function startBackend() {
     log(`backendPath existe: ${fs.existsSync(backendPath)}`);
     log(`nodeModulesPath: ${nodeModulesPath}`);
     log(`nodeModulesPath existe: ${fs.existsSync(nodeModulesPath)}`);
+    log(`Database URL producao: ${databaseUrl}`);
 
     if (fs.existsSync(backendPath)) {
       backendProcess = fork(backendPath, [], {
         env: {
           ...process.env,
           PORT: '3000',
+          DATABASE_URL: databaseUrl,
           NODE_PATH: nodeModulesPath,
         },
         stdio: ['pipe', 'pipe', 'pipe', 'ipc'],
