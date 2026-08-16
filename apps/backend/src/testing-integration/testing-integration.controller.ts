@@ -9,7 +9,7 @@ export class TestingIntegrationController {
   constructor(private readonly testingIntegrationService: TestingIntegrationService) {}
 
   @Get('dados')
-  getDados(): { message: string } {
-    return this.testingIntegrationService.getData();
+  async getDados() {
+    return await this.testingIntegrationService.getData();
   }
 }

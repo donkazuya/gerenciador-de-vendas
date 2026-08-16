@@ -26,7 +26,12 @@
     "build:electron": "npm run build && electron-builder",
     "package:win": "npm run build && electron-builder --win nsis",
     "format:check": "prettier --check \"apps/**/*.{ts,js,html,json,scss,css}\"",
-    "format:write": "prettier --write \"apps/**/*.{ts,js,html,json,scss,css}\""
+    "format:write": "prettier --write \"apps/**/*.{ts,js,html,json,scss,css}\"",
+    "prisma:studio": "prisma studio",
+    "prisma:migrate": "prisma migrate dev",
+    "prisma:generate": "prisma generate",
+    "prisma:reset": "prisma migrate reset",
+    "prisma:deploy": "prisma migrate deploy"
   },
   "private": true,
   "devDependencies": {
@@ -54,6 +59,7 @@
     "@swc/core": "~1.15.5",
     "@swc/helpers": "~0.5.18",
     "@tailwindcss/postcss": "^4.3.3",
+    "@types/better-sqlite3": "^9.6.0",
     "@types/node": "20.19.9",
     "@typescript-eslint/utils": "^8.40.0",
     "angular-eslint": "^21.0.1",
@@ -67,6 +73,7 @@
     "nx": "^22.6.5",
     "postcss": "^8.5.26",
     "prettier": "~3.6.2",
+    "prisma": "^7.9.1",
     "tailwindcss": "^3.4.19",
     "tslib": "^2.3.0",
     "typescript": "~5.9.2",
@@ -86,8 +93,15 @@
     "@nestjs/config": "^4.0.4",
     "@nestjs/core": "^11.0.0",
     "@nestjs/platform-express": "^11.0.0",
+    "@nestjs/typeorm": "^11.0.3",
+    "@prisma/adapter-better-sqlite3": "^7.9.1",
+    "@prisma/client": "^7.9.1",
     "axios": "^1.6.0",
+    "better-sqlite3": "^12.11.1",
+    "dotenv": "^17.4.2",
     "reflect-metadata": "^0.1.13",
-    "rxjs": "~7.8.0"
+    "rxjs": "~7.8.0",
+    "sqlite3": "^6.0.1",
+    "typeorm": "^1.1.0"
   }
 }

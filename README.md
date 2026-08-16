@@ -1,98 +1,174 @@
-# GerenciadorDeVendas
+# 🛒 Gerenciador de Vendas — Guia Passo a Passo para Executar
 
-<a alt="Nx logo" href="https://nx.dev" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/nrwl/nx/master/images/nx-logo.png" width="45"></a>
+Bem-vindo ao **Gerenciador de Vendas**! 🚀  
+Este guia foi criado especialmente para você que **não tem experiência com programação** e deseja executar o projeto ou gerar um aplicativo instalável no seu computador Windows.
 
-✨ Your new, shiny [Nx workspace](https://nx.dev) is ready ✨.
+---
 
-[Learn more about this workspace setup and its capabilities](https://nx.dev/getting-started/intro#learn-nx?utm_source=nx_project&amp;utm_medium=readme&amp;utm_campaign=nx_projects) or run `npx nx graph` to visually explore what was created. Now, let's get you up to speed!
+## 📌 Sumário
 
-## Run tasks
+1. [O que é este projeto?](#-o-que-é-este-projeto)
+2. [Pré-requisitos (O que instalar antes)](#-pré-requisitos-o-que-instalar-antes)
+3. [Passo a Passo para Executar o Projeto](#-passo-a-passo-para-executar-o-projeto)
+   - [Passo 1: Abrir a pasta no Terminal](#passo-1-abrir-a-pasta-no-terminal)
+   - [Passo 2: Instalar os componentes](#passo-2-instalar-os-componentes)
+   - [Passo 3: Criar o Banco de Dados](#passo-3-criar-o-banco-de-dados)
+   - [Passo 4: Iniciar o Aplicativo](#passo-4-iniciar-o-aplicativo)
+4. [Gerar o Aplicativo Instalável (.exe para Windows)](#-gerar-o-aplicativo-instalável-exe-para-windows)
+5. [Como visualizar os dados salvos (Prisma Studio)](#-como-visualizar-os-dados-salvos-prisma-studio)
+6. [Resumo dos Comandos](#-resumo-dos-comandos)
+7. [Solução de Problemas Comuns](#-solução-de-problemas-comuns)
 
-To run tasks with Nx use:
+---
 
-```sh
-npx nx <target> <project-name>
+## 💡 O que é este projeto?
+
+O **Gerenciador de Vendas** é um aplicativo desktop para computador que ajuda a controlar vendas, produtos e clientes.
+
+Foi desenvolvido utilizando tecnologias modernas:
+- **Interface Visual (Frontend):** Angular
+- **Servidor Interno (Backend):** NestJS
+- **Janela do Aplicativo Desktop:** Electron
+- **Banco de Dados Local:** SQLite (Prisma)
+
+---
+
+## 💻 Pré-requisitos (O que instalar antes)
+
+Para rodar este projeto, você só precisa de **uma ferramenta essencial** instalada no seu computador: o **Node.js**.
+
+### 1️⃣ Baixar e Instalar o Node.js
+
+O Node.js é o "motor" que vai executar o projeto.
+
+1. Acesse o site oficial: [https://nodejs.org/](https://nodejs.org/)
+2. Clique no botão verde de download da versão **LTS** (Exemplo: `v20.x` ou `v22.x` — a versão recomendada para a maioria dos usuários).
+3. Abra o arquivo baixado e instale avançando as telas (pode clicar em *Next/Avançar* em todas as opções padrão).
+4. **IMPORTANTE:** Após a instalação terminar, **reinicie o seu computador** ou feche e reabra qualquer janela do terminal/código.
+
+> [!TIP]
+> **Como testar se o Node.js foi instalado corretamente?**  
+> Abra o *Prompt de Comando* (CMD) ou *PowerShell* e digite:
+> ```bash
+> node -v
+> ```
+> Se aparecer um número de versão (ex: `v20.18.0`), significa que está tudo pronto!
+
+---
+
+## 🛠️ Passo a Passo para Executar o Projeto
+
+Siga os 4 passos abaixo na ordem em que aparecem.
+
+### Passo 1: Abrir a pasta no Terminal
+
+Se você estiver usando o **VS Code** (Visual Studio Code):
+1. Abra a pasta do projeto no VS Code (`Arquivo` > `Abrir Pasta...`).
+2. No menu superior, clique em **Terminal** > **Novo Terminal** (ou pressione a atalho `Ctrl` + `'`).
+3. Uma barra preta ou azul vai se abrir na parte inferior da tela. Esse é o seu terminal.
+
+Se estiver usando o **Windows Explorer** tradicional:
+1. Abra a pasta do projeto no Windows.
+2. Clique na barra de endereço na parte superior da pasta, digite `cmd` e aperte `Enter`.
+
+---
+
+### Passo 2: Instalar os componentes
+
+No terminal, digite o comando abaixo e pressione `Enter`:
+
+```bash
+npm install
 ```
 
-For example:
+⏳ **O que isso faz?**  
+Ele vai baixar automaticamente todas as dependências e ferramentas que o projeto precisa para funcionar. Esse processo pode levar entre 1 a 3 minutos dependendo da sua velocidade de internet. Aguarde até que o terminal termine e volte a ficar disponível.
 
-```sh
-npx nx build myproject
+---
+
+### Passo 3: Criar o Banco de Dados
+
+O aplicativo precisa de um banco de dados local para salvar as informações de vendas e produtos.
+
+Execute os dois comandos a seguir, um por vez:
+
+1. Gerar os arquivos do banco de dados:
+   ```bash
+   npm run prisma:generate
+   ```
+
+2. Criar a estrutura das tabelas de dados:
+   ```bash
+   npm run prisma:migrate
+   ```
+
+> [!NOTE]
+> Ao rodar o `prisma:migrate`, ele irá criar automaticamente um arquivo chamado `dev.db` na raiz da pasta. Esse arquivo guarda todas as informações cadastradas no sistema.
+
+---
+
+### Passo 4: Iniciar o Aplicativo
+
+Agora é só dar o comando para ligar tudo! Digite no terminal:
+
+```bash
+npm run dev
 ```
 
-These targets are either [inferred automatically](https://nx.dev/concepts/inferred-tasks?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) or defined in the `project.json` or `package.json` files.
+🚀 **O que acontece agora?**
+1. O backend (servidor) vai iniciar.
+2. O frontend (interface) vai compilar.
+3. Em alguns segundos, a **janela do aplicativo Gerenciador de Vendas abrirá automaticamente** na sua tela!
 
-[More about running tasks in the docs &raquo;](https://nx.dev/features/run-tasks?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
+> 💡 **Para fechar o programa durante o desenvolvimento:**  
+> Basta fechar a janela do aplicativo ou clicar na janela do terminal e pressionar as teclas `Ctrl` + `C` para encerrar os processos.
 
-## Add new projects
 
-While you could add new projects to your workspace manually, you might want to leverage [Nx plugins](https://nx.dev/concepts/nx-plugins?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) and their [code generation](https://nx.dev/features/generate-code?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) feature.
+## 📊 Como visualizar os dados salvos (Prisma Studio)
 
-To install a new plugin you can use the `nx add` command. Here's an example of adding the React plugin:
-```sh
-npx nx add @nx/react
+Se você quiser ver, adicionar ou editar diretamente os dados cadastrados no banco de dados de forma visual e simples sem abrir o app:
+
+No terminal, digite:
+
+```bash
+npm run prisma:studio
 ```
 
-Use the plugin's generator to create new projects. For example, to create a new React app or library:
+Uma página no seu navegador da Web será aberta automaticamente (no endereço `http://localhost:5555`).  
+Lá você terá uma tabela visual fácil para consultar tudo o que está salvo no sistema.
 
-```sh
-# Generate an app
-npx nx g @nx/react:app demo
+---
 
-# Generate a library
-npx nx g @nx/react:lib some-lib
-```
+## 📋 Resumo dos Comandos
 
-You can use `npx nx list` to get a list of installed plugins. Then, run `npx nx list <plugin-name>` to learn about more specific capabilities of a particular plugin. Alternatively, [install Nx Console](https://nx.dev/getting-started/editor-setup?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) to browse plugins and generators in your IDE.
+Aqui está uma tabela rápida de referência:
 
-[Learn more about Nx plugins &raquo;](https://nx.dev/concepts/nx-plugins?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) | [Browse the plugin registry &raquo;](https://nx.dev/plugin-registry?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
+| Ação desejada | Comando a digitar no terminal |
+| :--- | :--- |
+| **Instalar ferramentas iniciais** | `npm install` |
+| **Iniciar o aplicativo (Modo de Teste)** | `npm run dev` |
+| **Gerar banco de dados** | `npm run prisma:migrate` |
+| **Visualizar o banco de dados no navegador** | `npm run prisma:studio` |
 
-## Set up CI!
+---
 
-### Step 1
+## ❓ Solução de Problemas Comuns
 
-To connect to Nx Cloud, run the following command:
+### 1. `O comando 'npm' não é reconhecido...`
+- **Causa:** O Node.js não foi instalado ou o terminal estava aberto durante a instalação.
+- **Solução:** Feche o terminal/VS Code, reinstale o Node.js se necessário e reabra o terminal.
 
-```sh
-npx nx connect
-```
+### 2. `Erro de Execução de Scripts no PowerShell (PSSecurityException)`
+- **Causa:** O Windows bloqueia por padrão a execução de scripts no PowerShell.
+- **Solução:** No terminal do VS Code, clique na setinha ao lado do ícone `+` no canto do terminal e escolha **Command Prompt** (CMD) em vez do PowerShell.
 
-Connecting to Nx Cloud ensures a [fast and scalable CI](https://nx.dev/ci/intro/why-nx-cloud?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects) pipeline. It includes features such as:
+### 3. `Porta 4200 ou 3000 já está em uso`
+- **Causa:** O aplicativo já está rodando em outra janela do terminal ou ficou preso em segundo plano.
+- **Solução:** Feche todas as janelas do terminal ou reinicie o computador para liberar a porta.
 
-- [Remote caching](https://nx.dev/ci/features/remote-cache?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-- [Task distribution across multiple machines](https://nx.dev/ci/features/distribute-task-execution?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-- [Automated e2e test splitting](https://nx.dev/ci/features/split-e2e-tasks?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-- [Task flakiness detection and rerunning](https://nx.dev/ci/features/flaky-tasks?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
+### 4. Quero zerar o banco de dados e começar do zero
+- **Solução:** Digite `npm run prisma:reset` no terminal e confirme. Isso limpa todos os dados de teste.
 
-### Step 2
+---
 
-Use the following command to configure a CI workflow for your workspace:
-
-```sh
-npx nx g ci-workflow
-```
-
-[Learn more about Nx on CI](https://nx.dev/ci/intro/ci-with-nx#ready-get-started-with-your-provider?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-
-## Install Nx Console
-
-Nx Console is an editor extension that enriches your developer experience. It lets you run tasks, generate code, and improves code autocompletion in your IDE. It is available for VSCode and IntelliJ.
-
-[Install Nx Console &raquo;](https://nx.dev/getting-started/editor-setup?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-
-## Useful links
-
-Learn more:
-
-- [Learn more about this workspace setup](https://nx.dev/getting-started/intro#learn-nx?utm_source=nx_project&amp;utm_medium=readme&amp;utm_campaign=nx_projects)
-- [Learn about Nx on CI](https://nx.dev/ci/intro/ci-with-nx?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-- [Releasing Packages with Nx release](https://nx.dev/features/manage-releases?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-- [What are Nx plugins?](https://nx.dev/concepts/nx-plugins?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-
-And join the Nx community:
-- [Discord](https://go.nx.dev/community)
-- [Follow us on X](https://twitter.com/nxdevtools) or [LinkedIn](https://www.linkedin.com/company/nrwl)
-- [Our Youtube channel](https://www.youtube.com/@nxdevtools)
-- [Our blog](https://nx.dev/blog?utm_source=nx_project&utm_medium=readme&utm_campaign=nx_projects)
-
-apenas um teste
+✨ **Pronto!** Agora você tem tudo o que precisa para rodar e utilizar o seu Gerenciador de Vendas. Bom uso!

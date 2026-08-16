@@ -1,4 +1,4 @@
-import { Component, inject, DestroyRef } from '@angular/core';
+import { Component, inject, DestroyRef, signal } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { ThemeSelectorComponent } from './shared/components/theme-selector/theme-selector.component';
 import { ThemeService } from './shared/services/theme.service';
@@ -16,14 +16,14 @@ export class App {
   protected themeService = inject(ThemeService);
   private readonly testingIntegrationService = inject(TestingIntegrationService);
   private readonly destroyRef = inject(DestroyRef);
-  testeMessage: string = "";
+  testeMessage = signal<string>("");
 
   teste() {
     this.testingIntegrationService
       .getData()
       .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe((data: any) => {
-        this.testeMessage = data.message
+        this.testeMessage.set(data.message)
         console.log(data.message);
       });
   }
