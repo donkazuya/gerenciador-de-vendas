@@ -149,6 +149,10 @@ Aqui está uma tabela rápida de referência:
 | **Iniciar o aplicativo (Modo de Teste)** | `npm run dev` |
 | **Gerar banco de dados** | `npm run prisma:migrate` |
 | **Visualizar o banco de dados no navegador** | `npm run prisma:studio` |
+| **Parar o aplicativo em execução** | `Ctrl` + `C` |
+
+| **Criar componente no Angular** | `npx nx g @nx/angular:component apps/frontend/src/app/CAMINHO_COMPONENTE` |
+
 
 ---
 

@@ -1,0 +1,46 @@
+.header {
+  height: var(--header-height, 64px);
+  background: var(--color-surface);
+  border-bottom: 1px solid var(--color-border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 24px;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  flex-shrink: 0;
+}
+.page-title {
+  font-family: 'Outfit', sans-serif;
+  font-size: 18px; font-weight: 600;
+  color: var(--color-text-primary);
+}
+.header-actions {
+  display: flex; align-items: center; gap: 16px;
+}
+.theme-picker { display: flex; gap: 6px; align-items: center; }
+.theme-dot {
+  width: 22px; height: 22px; border-radius: 50%;
+  border: 2.5px solid transparent;
+  cursor: pointer;
+  transition: transform 0.15s;
+}
+.theme-dot:hover { transform: scale(1.15); }
+.theme-dot.active {
+  border-color: var(--color-text-primary);
+  outline: 2px solid var(--color-border);
+}
+.divider { width: 1px; height: 24px; background: var(--color-border); }
+.icon-btn {
+  background: none; border: none; cursor: pointer;
+  color: var(--color-text-secondary); padding: 4px; border-radius: 6px;
+}
+.avatar-group { display: flex; align-items: center; gap: 8px; cursor: pointer; }
+.avatar {
+  width: 34px; height: 34px; border-radius: 50%;
+  background: var(--color-primary);
+  display: flex; align-items: center; justify-content: center;
+  color: white; font-size: 13px; font-weight: 600;
+}
+.avatar-name { font-size: 13px; font-weight: 500; color: var(--color-text-primary); }
