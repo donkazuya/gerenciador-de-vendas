@@ -1,0 +1,10 @@
+<div class="layout-shell">
+  <app-sidebar [collapsed]="collapsed()" (toggle)="collapsed.set(!collapsed())" />
+
+  <div class="layout-body">
+    <app-header />
+    <main class="layout-content">
+      <router-outlet />
+    </main>
+  </div>
+</div>

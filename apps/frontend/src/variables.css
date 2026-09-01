@@ -1,0 +1,32 @@
+/* ============================================================
+   VendaFácil — CSS Variables
+   Importe este arquivo no styles.css do projeto Angular
+   ============================================================ */
+
+:root {
+  /* Fontes */
+  --font-display: 'Outfit', system-ui, sans-serif;
+  --font-body: 'DM Sans', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+
+  /* Dimensões do layout */
+  --sidebar-width: 240px;
+  --sidebar-collapsed: 72px;
+  --header-height: 64px;
+  --page-padding: 24px;
+  --radius: 10px;
+
+  /* Sombras */
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
+  --shadow-md: 0 4px 12px rgba(0,0,0,0.08), 0 2px 4px rgba(0,0,0,0.04);
+
+  /* Cores semânticas (independentes de tema) */
+  --color-success:    #16a34a;
+  --color-success-bg: #dcfce7;
+  --color-danger:     #dc2626;
+  --color-danger-bg:  #fee2e2;
+  --color-warning:    #d97706;
+  --color-warning-bg: #fef3c7;
+  --color-info:       #2563eb;
+  --color-info-bg:    #dbeafe;
+}

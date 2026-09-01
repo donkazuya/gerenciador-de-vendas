@@ -1,0 +1,14 @@
+[data-theme="green"] {
+  --color-primary:       #15803d;
+  --color-primary-hover: #166534;
+  --color-primary-light: #dcfce7;
+
+  --color-background:    #f0fdf4;
+  --color-surface:       #ffffff;
+  --color-surface-2:     #f7fcf8;
+
+  --color-text-primary:   #163020;
+  --color-text-secondary: #4b7a5d;
+
+  --color-border: #d0f0db;
+}

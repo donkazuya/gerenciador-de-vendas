@@ -1,38 +1,25 @@
-import { Injectable, signal } from '@angular/core';
+import { Injectable, signal, effect } from '@angular/core';
 
-export type Theme = 'light' | 'dark' | 'midnight' | 'emerald' | 'sunset' | 'dracula';
+export type Theme = 'purple' | 'blue' | 'green' | 'dark';
 
-export interface ThemeOption {
-  id: Theme;
-  label: string;
-  color: string; // Para exibir um preview do tema na UI
-}
-
-@Injectable({
-  providedIn: 'root',
-})
+@Injectable({ providedIn: 'root' })
 export class ThemeService {
-  // Lista dos 6 temas disponíveis
-  readonly themes: ThemeOption[] = [
-    { id: 'light', label: 'Claro', color: '#2563eb' },
-    { id: 'dark', label: 'Escuro', color: '#3b82f6' },
-    { id: 'midnight', label: 'Midnight', color: '#ec4899' },
-    { id: 'emerald', label: 'Emerald', color: '#10b981' },
-    { id: 'sunset', label: 'Sunset', color: '#f97316' },
-    { id: 'dracula', label: 'Dracula', color: '#ff79c6' },
-  ];
-
-  // Signal reativo para o tema atual
-  currentTheme = signal<Theme>('light');
+  readonly current = signal<Theme>('purple');
 
   constructor() {
-    const savedTheme = (localStorage.getItem('app-theme') as Theme) || 'light';
-    this.setTheme(savedTheme);
+    // Persist theme across reloads
+    const saved = localStorage.getItem('theme') as Theme | null;
+    if (saved) this.current.set(saved);
+
+    // Apply data-theme attribute whenever signal changes
+    effect(() => {
+      const theme = this.current();
+      document.documentElement.dataset['theme'] = theme === 'purple' ? '' : theme;
+      localStorage.setItem('theme', theme);
+    });
   }
 
-  setTheme(theme: Theme) {
-    this.currentTheme.set(theme);
-    document.documentElement.setAttribute('data-theme', theme);
-    localStorage.setItem('app-theme', theme);
+  set(theme: Theme): void {
+    this.current.set(theme);
   }
 }
