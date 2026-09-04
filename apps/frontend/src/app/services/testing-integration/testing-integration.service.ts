@@ -1,13 +1,18 @@
-import { Injectable } from "@angular/core";
+import { Injectable, inject } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
+import { Observable } from "rxjs";
+
+export interface IntegrationResponse {
+  message: string;
+}
 
 @Injectable({
   providedIn: 'root'
 })
 export class TestingIntegrationService {
-  constructor(private http: HttpClient) { }
+  private readonly http = inject(HttpClient);
 
-  getData() {
-    return this.http.get('http://localhost:3000/api/teste/dados');
+  getData(): Observable<IntegrationResponse> {
+    return this.http.get<IntegrationResponse>('http://localhost:3000/api/teste/dados');
   }
 }

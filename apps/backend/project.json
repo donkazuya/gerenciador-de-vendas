@@ -18,7 +18,8 @@
       },
       "configurations": {
         "development": {
-          "mode": "development"
+          "mode": "development",
+          "watch": true
         },
         "production": {
           "mode": "production"
@@ -52,9 +53,8 @@
     },
     "serve": {
       "executor": "nx:run-commands",
-      "dependsOn": ["build"],
       "options": {
-        "command": "node dist/apps/backend/main.js"
+        "command": "npx nodemon --watch apps/backend/src -e ts --exec \"nx build gerenciador-vendas-backend && node dist/apps/backend/main.js\""
       }
     }
   },

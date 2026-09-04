@@ -1,4 +1,7 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, ChangeDetectionStrategy } from '@angular/core';
+import { Router, NavigationEnd } from '@angular/router';
+import { toSignal } from '@angular/core/rxjs-interop';
+import { filter, map, startWith } from 'rxjs/operators';
 import { ThemeService, Theme } from '../../services/theme.service';
 
 const THEMES: { id: Theme; label: string; color: string }[] = [
@@ -8,18 +11,32 @@ const THEMES: { id: Theme; label: string; color: string }[] = [
   { id: 'dark', label: 'Escuro', color: '#8b5cf6' },
 ];
 
+const PATH_TITLES: Record<string, string> = {
+  '/dashboard': 'Dashboard',
+  '/products': 'Produtos',
+  '/sales': 'Vendas',
+  '/customers': 'Clientes',
+  '/settings': 'Configurações',
+};
+
 @Component({
   selector: 'app-header',
   imports: [],
   templateUrl: './header.html',
   styleUrl: './header.css',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class Header {
-  themeService = inject(ThemeService);
-  themes = THEMES;
+  readonly themeService = inject(ThemeService);
+  private readonly router = inject(Router);
+  readonly themes = THEMES;
 
-  get pageTitle(): string {
-    // In a real app: inject ActivatedRoute and map path to title
-    return 'Plataforma de Vendas';
-  }
+  readonly pageTitle = toSignal(
+    this.router.events.pipe(
+      filter((e): e is NavigationEnd => e instanceof NavigationEnd),
+      map((e) => PATH_TITLES[e.urlAfterRedirects] ?? 'Plataforma de Vendas'),
+      startWith(PATH_TITLES[this.router.url] ?? 'Plataforma de Vendas')
+    ),
+    { initialValue: 'Plataforma de Vendas' }
+  );
 }
