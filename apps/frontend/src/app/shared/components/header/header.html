@@ -1,13 +1,14 @@
 <header class="header">
-  <h1 class="page-title">{{ pageTitle }}</h1>
+  <h1 class="page-title">{{ pageTitle() }}</h1>
 
   <div class="header-actions">
     <!-- Theme picker -->
-    <div class="theme-picker">
+    <div class="theme-picker" role="group" aria-label="Seletor de tema">
       @for (t of themes; track t.id) {
         <button
           class="theme-dot"
           [title]="t.label"
+          [attr.aria-label]="'Tema ' + t.label"
           [class.active]="themeService.current() === t.id"
           [style.background]="t.color"
           (click)="themeService.set(t.id)"

@@ -2,6 +2,10 @@ const { NxAppWebpackPlugin } = require('@nx/webpack/app-plugin');
 const { join } = require('path');
 
 module.exports = {
+  watchOptions: {
+    aggregateTimeout: 300,
+    poll: 500,
+  },
   output: {
     path: join(__dirname, '../../dist/apps/backend'),
     clean: true,
@@ -20,6 +24,7 @@ module.exports = {
       outputHashing: 'none',
       generatePackageJson: false,
       sourceMap: true,
+      transpileOnly: true,
     }),
   ],
 };

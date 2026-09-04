@@ -2,6 +2,7 @@ const { app, BrowserWindow, Menu } = require('electron');
 const path = require('path');
 const { fork } = require('child_process');
 const fs = require('fs');
+const http = require('http');
 
 let win;
 let backendProcess;
@@ -17,6 +18,29 @@ function log(message) {
   const line = `[${timestamp}] ${message}\n`;
   fs.appendFileSync(logPath, line);
   console.log(message);
+}
+
+function checkBackendReady(url = 'http://localhost:3000/api', timeoutMs = 25000) {
+  return new Promise((resolve) => {
+    const startTime = Date.now();
+    const timer = setInterval(() => {
+      const req = http.get(url, (res) => {
+        clearInterval(timer);
+        log('Backend verificado e respondendo com sucesso.');
+        resolve(true);
+      });
+
+      req.on('error', () => {
+        if (Date.now() - startTime > timeoutMs) {
+          clearInterval(timer);
+          log('Timeout ao aguardar backend. Exibindo a janela mesmo assim.');
+          resolve(false);
+        }
+      });
+
+      req.end();
+    }, 300);
+  });
 }
 
 function startBackend() {
@@ -86,6 +110,7 @@ function createWindow() {
   win = new BrowserWindow({
     width: 1366,
     height: 768,
+    show: false, // Oculto inicialmente para aguardar a inicialização completa
     autoHideMenuBar: app.isPackaged,
     webPreferences: {
       nodeIntegration: true,
@@ -105,6 +130,14 @@ function createWindow() {
       console.error('Erro ao carregar index.html:', err);
     });
   }
+
+  // Aguarda o backend confirmar disponibilidade antes de exibir a janela do Electron
+  checkBackendReady('http://localhost:3000/api').then(() => {
+    if (win && !win.isDestroyed()) {
+      win.show();
+      win.focus();
+    }
+  });
 
   win.on('closed', () => (win = null));
 }
